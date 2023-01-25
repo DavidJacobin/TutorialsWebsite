@@ -24,6 +24,10 @@ async function register(username, password){
     return token;
 };
 
+async function login(username, password){
+
+};
+
 function createSession({_id, username}){
     const payload = {
         _id,
