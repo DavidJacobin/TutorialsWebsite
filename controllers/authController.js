@@ -44,7 +44,7 @@ authController.post('/login', (req, res) =>{
     try {
         const token = login(req.body.username, req.body.password);
 
-        res.cookie('toke', token);
+        res.cookie('token', token);
         res.redirect('/');
     } catch (err) {
         const error = errorParser(err);
