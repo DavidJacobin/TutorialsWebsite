@@ -25,7 +25,21 @@ async function register(username, password){
 };
 
 async function login(username, password){
+    const user = User.findOne({username});
 
+    if(!user){
+        throw new Error('Incorrect username or password.');
+    };
+
+    const result = bcrypt.compare(password, user.hashedPassword);
+
+    if(result == false){
+        throw new Error('Incorrect username or password.');
+    };
+
+    const token = createSession(user);
+
+    return token;
 };
 
 function createSession({_id, username}){

@@ -1,4 +1,4 @@
-const { register } = require('../services/userService');
+const { register, login } = require('../services/userService');
 const { errorParser } = require('../util/errorParser');
 
 const authController = require('express').Router();
@@ -36,5 +36,23 @@ authController.post('/register', async (req, res) =>{
 
 });
 
+authController.get('/login', (req, res) => {
+    res.render('login');
+});
+
+authController.post('/login', (req, res) =>{
+    try {
+        const token = login(req.body.username, req.body.password);
+
+        res.cookie('toke', token);
+        res.redirect('/');
+    } catch (err) {
+        const error = errorParser(err);
+        res.render('login',{
+            error,
+            body: {username : req.body.username}
+        })
+    }
+});
 
 module.exports = authController;
