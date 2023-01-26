@@ -40,9 +40,9 @@ authController.get('/login', (req, res) => {
     res.render('login');
 });
 
-authController.post('/login', (req, res) =>{
+authController.post('/login',async (req, res) =>{
     try {
-        const token = login(req.body.username, req.body.password);
+        const token = await login(req.body.username, req.body.password);
 
         res.cookie('token', token);
         res.redirect('/');
@@ -53,6 +53,11 @@ authController.post('/login', (req, res) =>{
             body: {username : req.body.username}
         })
     }
+});
+
+authController.get('/logout', (req,res) =>{
+    res.clearCookie('token');
+    res.redirect('/');
 });
 
 module.exports = authController;

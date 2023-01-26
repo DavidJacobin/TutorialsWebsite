@@ -53,8 +53,8 @@ function createSession({_id, username}){
     return token;
 };
 
-async function verifyToken(data){
-    return jwt.verify(data, JWT_SECRET);
+function verifyToken(token){
+    return jwt.verify(token, JWT_SECRET);
 };
 
 
