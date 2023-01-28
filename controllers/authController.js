@@ -22,13 +22,13 @@ authController.post('/register', async (req, res) =>{
     
         res.cookie('token', token);
     
-        res.redirect('/auth/register');
+        res.redirect('/');
         
     } catch (err) {
-        const error = errorParser(err)
+        const errors = errorParser(err)
 
         res.render('register',{
-            error,
+            errors,
             body:{username: req.body.username}
         });
         
@@ -47,9 +47,9 @@ authController.post('/login',async (req, res) =>{
         res.cookie('token', token);
         res.redirect('/');
     } catch (err) {
-        const error = errorParser(err);
+        const errors = errorParser(err);
         res.render('login',{
-            error,
+            errors,
             body: {username : req.body.username}
         })
     }

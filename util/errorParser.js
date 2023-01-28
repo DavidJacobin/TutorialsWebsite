@@ -1,5 +1,10 @@
-function errorParser(error){
-    return error.message.split('/n');
+function errorParser(error) {
+    if (error.name == 'ValidationError') {
+        return Object.values(error.errors).map(v => v.message);
+    } else {
+        return error.message.split('/n');
+
+    }
 }
 
-module.exports = {errorParser};
+module.exports = { errorParser };

@@ -1,6 +1,14 @@
-<h1>Login Page</h1>
-<form method="POST">
-    <label>Username:<input type="text" name="username"></label>
-    <label>Password:<input type="text" name="password"></label>
-    <button>Register</button>
-</form>
+<main>
+    <form class="text-center border border-light p-5" action="/auth/login" method="POST">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" placeholder="Username" name="username" value="">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" placeholder="Password" name="password" value="">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</main>
