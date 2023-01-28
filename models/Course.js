@@ -20,6 +20,13 @@ const courseSchema = new Schema({
     users: { types: [Types.ObjectId], ref: 'User', default: [] }
 });
 
+courseSchema.index({title: 1},{
+    collation:{
+        locale: 'en',
+        strength: 2
+    }
+});
+
 const Course = model('Course', courseSchema);
 
 module.exports = Course;
