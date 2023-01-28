@@ -16,8 +16,8 @@ const courseSchema = new Schema({
         }
     },
     duration: { type: String, required: true },
-    createdAt: { type: String, required: true },
-    users: { types: [Types.ObjectId], ref: 'User', default: [] }
+    createdAt: { type: String, required: true, default: () => (new Date()).toISOString().slice(0,10) },
+    //users: { types: [Types.ObjectId], ref: 'User', default: [] }
 });
 
 courseSchema.index({title: 1},{
