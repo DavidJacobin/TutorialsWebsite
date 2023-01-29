@@ -1,4 +1,4 @@
-const { createCourse, getById } = require('../services/courseService');
+const { createCourse, getById, deleteById } = require('../services/courseService');
 const { errorParser } = require('../util/errorParser');
 
 const courseController = require('express').Router();
@@ -46,6 +46,12 @@ courseController.post('/create', async(req, res) =>{
     }
 });
 
+
+courseController.get('/:id/delete',  (req, res) =>{
+    deleteById(req.params.id)
+    res.redirect('/')
+
+});
 
 
 

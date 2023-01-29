@@ -18,12 +18,17 @@ async function getById(id){
     return Course.findById(id).lean();
 }
 
+async function deleteById(id){
+    return Course.findByIdAndDelete(id)
+}
+
 
 
 module.exports = {
     getAllByDate,
     createCourse,
     getRecent,
-    getById
+    getById,
+    deleteById
 
 }
