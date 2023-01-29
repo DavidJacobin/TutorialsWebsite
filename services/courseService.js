@@ -26,6 +26,15 @@ async function updateById(id,data){
     return Course.findByIdAndUpdate(id,data)
 };
 
+async function enrollUser(courseId, userId){
+    const existing = await Course.findById(courseId);
+
+    existing.userCount++;
+
+    existing.users.push(userId);
+    return existing.save();
+}
+
 
 
 module.exports = {
@@ -34,6 +43,7 @@ module.exports = {
     getRecent,
     getById,
     deleteById,
-    updateById
+    updateById,
+    enrollUser
 
 }
