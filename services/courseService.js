@@ -16,11 +16,15 @@ async function createCourse(course) {
 
 async function getById(id){
     return Course.findById(id).lean();
-}
+};
 
 async function deleteById(id){
     return Course.findByIdAndDelete(id)
-}
+};
+
+async function updateById(id,data){
+    return Course.findByIdAndUpdate(id,data)
+};
 
 
 
@@ -29,6 +33,7 @@ module.exports = {
     createCourse,
     getRecent,
     getById,
-    deleteById
+    deleteById,
+    updateById
 
 }
