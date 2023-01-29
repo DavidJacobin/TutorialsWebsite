@@ -19,6 +19,7 @@ const courseSchema = new Schema({
     duration: { type: String, required: true },
     createdAt: { type: String, required: true, default: () => (new Date()).toISOString().slice(0,10) },
     users: { type: [Types.ObjectId], ref: 'User', default: [] },
+    userCount: {type: Number, default: 0},
     owner: { type: Types.ObjectId, ref: 'User'}
 });
 
