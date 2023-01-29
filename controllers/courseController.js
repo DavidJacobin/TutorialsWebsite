@@ -14,6 +14,7 @@ courseController.post('/create', async(req, res) =>{
         description: req.body.description,
         imageUrl: req.body.imageUrl,
         duration: req.body.duration,
+        owner: req.user._id
     }
 
 

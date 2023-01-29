@@ -1,12 +1,19 @@
 const homeController = require('express').Router();
 
-homeController.get('/', (req,res)=>{
+homeController.get('/', async (req,res)=>{
+    let view;
+    const courses = await getAllByDate()
 
     if(req.user){
-        res.render('user-home');
+        view = 'user-home';
+        courses = await getAllByDate();
     }else{
-        res.render('guest-home');
-    }
+        view = 'guest-home';
+    };
+
+    res.render(view,
+    {courses}
+    );
 });
 
 module.exports = homeController;
